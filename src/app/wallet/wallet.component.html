@@ -15,10 +15,10 @@
           </div>
           <div class="row">
             <div class="col-12">
-              <button class="btn btn-primary btn-lg">
+              <button class="btn btn-primary btn-lg" (click)="open(content)">
                 Send
               </button>
-              <button class="btn btn-primary btn-lg">
+              <button class="btn btn-primary btn-lg" (click)="open(content2)">
                 Receive
               </button>
             </div>
@@ -66,3 +66,48 @@
     </div>
   </div>
 </div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Send BACC</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Your Ethereum Address</p>
+    <input class="form-control"  placeholder="0x.........."/>
+    <pre>Do not withdraw tokens to an exchange and only withdraw to wallets which support ERC20 tokens (MEW, Metamask, MIST, Ethereum wallet and others)
+    </pre>
+    <p>Amount BACS</p>
+    <input class="form-control"  placeholder="20"/>
+    <pre>Min Withdrawal: 20 BACS
+    </pre>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Send</button>
+  </div>
+</ng-template>
+
+
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Receive</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" value="0x98y4tr9efauhiuhvdffdgb" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Copy</button>
+      </div>
+    </div>
+    <pre>Send BACS to this address</pre>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>

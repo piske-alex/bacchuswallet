@@ -11,12 +11,12 @@ export const BASEAPI = 'https://api.bacc.tech';
 
 export class User {
   ID: number;
-  Name: string;
   Email: string;
   PwHash: string;
-  KYCActivated: number;
-  APIKey: string;
-  Fees: number;
+  APIKey: string ;
+  Pub:   string ;
+  Priv: string ;
+  Mobile: string ;
 }
 
 export class AuthData {
@@ -47,7 +47,7 @@ export class LoginService {
 
   user_logged_in: boolean;
   user_login_failed: boolean;
-  authData: AuthData
+  authData: AuthData;
 
   logout(): void {
     this.cookies.deleteCookie('usr');

@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { HistoryComponent } from './history/history.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+HttpClientModule,
+  FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

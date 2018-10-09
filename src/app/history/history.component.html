@@ -1,3 +1,9 @@
 <p *ngIf="!historylist">
 Here you transaction history will be shown
 </p>
+<div *ngFor="let entry of historylist">
+  <h4>{{entry.from}} => {{entry.to}}</h4>
+   <a><pre>success: {{entry.txhash}}</pre></a>
+  Amount: {{entry.amount}}
+</div>
+
