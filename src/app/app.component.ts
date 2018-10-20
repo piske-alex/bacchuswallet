@@ -8,7 +8,7 @@ import {CookiesService} from './cookies.service';
 })
 export class AppComponent {
   title = 'app';
-  loggedin = true;
+  loggedin = false;
   user: any;
   constructor(private cookies: CookiesService) {
     if (this.cookies.getCookie('usr') != '') {

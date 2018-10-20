@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {HistoryService} from '../history.service';
+import {CookiesService} from '../cookies.service';
 
 @Component({
   selector: 'app-history',
@@ -8,18 +11,24 @@ import { Component, OnInit } from '@angular/core';
 export class HistoryComponent implements OnInit {
 
   historylist: any;
+  user:any;
+  loggedin:boolean;
 
-
-  constructor() { }
+  constructor(private http: HttpClient, private historyservice: HistoryService, private cookies:CookiesService) {
+    if (this.cookies.getCookie('usr') != '') {
+      this.user = (JSON.parse(this.cookies.getCookie('usr')));
+      if (this.user.ID > 0) {
+        this.loggedin = true;
+      }
+    }
+  }
 
   ngOnInit() {
-    this.historylist = [{
-      status: 'success',
-      from: '0x938hxfc89732bbsd34ww',
-      to: '0x9834hjv3q4vtrwafcet',
-      amount: 234,
-      txhash: '3023x98qyw4e9t8vbyhw8re7yw48eiuh5t8if7wy4rt8i7dsfgvaww35'
-    }];
+
+    this.historyservice.auth(this.user.APIKey)
+      .subscribe(user => {
+
+      });
   }
 
 }

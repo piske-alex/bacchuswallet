@@ -6,7 +6,7 @@ import {catchError, tap} from 'rxjs/operators';
 import {CookiesService} from './cookies.service';
 import {localtest} from './constants/serverconfig';
 
-export const BASEAPI = 'https://api.bacc.tech';
+export const BASEAPI = 'http://api.bacc.tech:3030/api/v1/';
 
 
 export class User {
@@ -35,7 +35,7 @@ export const httpOptions = {
 })
 export class LoginService {
 
-  private heroesUrl = localtest + 'account/login/';  // URL to web api\
+  private heroesUrl = BASEAPI + 'account/login/';  // URL to web api\
 
   loginbool: Observable<boolean>;
   private boolSubject: Subject<boolean>;
@@ -43,7 +43,7 @@ export class LoginService {
   constructor(
     private http: HttpClient,
     private cookies: CookiesService,
-    private router: Router, ) {  }
+     ) {  }
 
   user_logged_in: boolean;
   user_login_failed: boolean;

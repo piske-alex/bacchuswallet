@@ -9,7 +9,7 @@
         <div class="card-body">
           <div class="jumbotron">
             <h1>
-              0 BACCHUS
+              {{user.Initamount}} BACCHUS
             </h1>
             <p>~0 ETH &nbsp; ~0 BTC &nbsp; ~0 USD</p>
           </div>
@@ -100,7 +100,7 @@
   </div>
   <div class="modal-body">
     <div class="input-group mb-3">
-      <input type="text" class="form-control" value="0x98y4tr9efauhiuhvdffdgb" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <input type="text" class="form-control" [value]="user.Pub" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
       <div class="input-group-append">
         <button class="btn btn-outline-secondary" type="button" id="button-addon2">Copy</button>
       </div>

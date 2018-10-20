@@ -5,15 +5,16 @@
     <p id="profile-name" class="profile-name-card"></p>
     <form class="form-signin">
       <span id="reauth-email" class="reauth-email"></span>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <input type="password" id="otp" class="form-control" placeholder="OTP" required>
+      <input  [(ngModel)]="authData.email" type="email" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <input [(ngModel)]="authData.password" type="password" name="inputPassword" class="form-control" placeholder="Password" required>
+      <input [(ngModel)]="authData.otp" type="password" name="otp" class="form-control" placeholder="OTP" required>
       <div id="remember" class="checkbox">
         <!--label>
           <input type="checkbox" value="remember-me"> Remember me
         </label-->
       </div>
-      <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit">Sign in</button>
+      <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="add()">Sign in</button>
+      <p *ngIf="faillogin">Login failed!</p>
     </form><!-- /form -->
     <a href="#" class="forgot-password">
       Forgot the password?
