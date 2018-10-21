@@ -6,7 +6,7 @@ import {catchError, tap} from 'rxjs/operators';
 import {CookiesService} from './cookies.service';
 import {localtest} from './constants/serverconfig';
 
-export const BASEAPI = 'http://api.bacc.tech:3030/api/v1/';
+export const BASEAPI = 'https://api.bacc.tech/api/v1/';
 
 
 export class User {
