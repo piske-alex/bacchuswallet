@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService) { }
 
   loggedin: boolean;
+  registerscreen: boolean;
   faillogin: boolean;
   errmsh: string;
   @Input()
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
     password: '',
     otp: ''
   };
+  
 
   public returnloginstatus(): boolean {
     return this.loggedin;
