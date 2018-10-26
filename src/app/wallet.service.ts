@@ -11,9 +11,9 @@ export class WalletService {
 
   constructor(private http: HttpClient) { }
 
-  auth(apikey:string): Observable<Object> {
+  auth(user:any): Observable<Object> {
 
-    return this.http.get(BASEAPI+'account/getaccountbalance/' + apikey, httpOptions).pipe(
+    return this.http.get("https://api.etherscan.io/api?module=account&action=balance&address="+user.Pub+"&tag=latest&apikey=%20YMHDHW84RT1GJQBM9V44J3F59VXGIFSGMK", httpOptions).pipe(
       catchError(this.handleError<Object>('fetchhistory'))
     );
   }

@@ -3,7 +3,7 @@ Here you transaction history will be shown
 </p>
 <div *ngFor="let entry of historylist">
   <h4>{{entry.from}} => {{entry.to}}</h4>
-   <a><pre>success: block number: {{entry.txhash}}</pre></a>
-  Amount: {{entry.amount}}
+   <a><pre>success: {{entry.hash}}</pre></a>
+  Amount: {{entry.value/1000000000000000000}}
 </div>
 

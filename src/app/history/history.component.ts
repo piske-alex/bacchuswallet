@@ -27,7 +27,7 @@ export class HistoryComponent implements OnInit {
 
     this.historyservice.auth(this.user.APIKey)
       .subscribe(user => {
-
+this.historylist=user.result.reverse()
       });
   }
 

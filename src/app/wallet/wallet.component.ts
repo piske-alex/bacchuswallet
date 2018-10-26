@@ -11,6 +11,7 @@ export class WalletComponent implements OnInit {
 
   user:any;
   loggedin:boolean;
+  balance:any;
 
   constructor(private cookies: CookiesService,private modalService: NgbModal) {
     if (this.cookies.getCookie('usr') != '') {
@@ -22,6 +23,10 @@ export class WalletComponent implements OnInit {
   }
 
   ngOnInit() {
+  this.historyservice.auth(this.user)
+      .subscribe(user => {
+this.balance=user
+      });
   }
 
   open(content) {

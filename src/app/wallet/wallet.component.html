@@ -9,13 +9,13 @@
         <div class="card-body">
           <div class="jumbotron">
             <h1>
-              {{user.Initamount}} BACCHUS
+              {{balance.result*1500/1000000000000000000}} BACCHUS
             </h1>
-            <p>~0 ETH &nbsp; ~0 BTC &nbsp; ~0 USD</p>
+            <p>~{{balance.result/1000000000000000000}} ETH</p>
           </div>
           <div class="row">
             <div class="col-12">
-              <button class="btn btn-primary btn-lg" (click)="open(content)">
+              <button class="btn btn-primary btn-lg" (click)="open(content)" disabled>
                 Send
               </button>
               <button class="btn btn-primary btn-lg" (click)="open(content2)">
