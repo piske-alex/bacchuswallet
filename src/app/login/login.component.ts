@@ -10,7 +10,9 @@ import {RegisterService} from '../register.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private regservice: RegisterService) { }
+  constructor(private loginService: LoginService, private regservice: RegisterService) {
+    this.registerscreen=false;
+  }
 
   loggedin: boolean;
   registerscreen: boolean;

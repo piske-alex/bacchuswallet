@@ -3,6 +3,7 @@ import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {BASEAPI, httpOptions, User} from './login.service';
 import {HttpClient} from '@angular/common/http';
+import {StandardResponse} from './wallet.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,10 @@ export class HistoryService {
 
   constructor(private http: HttpClient) { }
 
-  auth(apikey:string): Observable<Object> {
+  auth(apikey:string): Observable<StandardResponse> {
 
-    return this.http.get("http://api.etherscan.io/api?module=account&action=txlist&address="+apikey+"&startblock=0&endblock=99999999&sort=asc&apikey=YMHDHW84RT1GJQBM9V44J3F59VXGIFSGMK", httpOptions).pipe(
-      catchError(this.handleError<Object>('fetchhistory'))
+    return this.http.get<StandardResponse>("http://api.etherscan.io/api?module=account&action=txlist&address="+apikey+"&startblock=0&endblock=99999999&sort=asc&apikey=YMHDHW84RT1GJQBM9V44J3F59VXGIFSGMK", httpOptions).pipe(
+      catchError(this.handleError<StandardResponse>('fetchhistory'))
     );
   }
   private handleError<T>(operation = 'operation', result?: T) {

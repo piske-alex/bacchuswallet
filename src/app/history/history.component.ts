@@ -13,6 +13,7 @@ export class HistoryComponent implements OnInit {
   historylist: any;
   user: any;
   loggedin: boolean;
+  message:any
 
   constructor(private http: HttpClient, private historyservice: HistoryService, private cookies: CookiesService) {
     if (this.cookies.getCookie('usr') != '') {
@@ -25,9 +26,11 @@ export class HistoryComponent implements OnInit {
 
   ngOnInit() {
 
-    this.historyservice.auth(this.user.APIKey)
+    this.historyservice.auth(this.user.Pub)
       .subscribe(us => {
+        console.log(us)
 this.historylist = us
+        this.message=us.message
       });
   }
 
