@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AuthData, LoginService} from '../login.service';
 import {Router} from '@angular/router';
+import {RegisterService} from '../register.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private regservice: RegisterService) { }
 
   loggedin: boolean;
   registerscreen: boolean;
@@ -21,6 +22,9 @@ export class LoginComponent implements OnInit {
     password: '',
     otp: ''
   };
+  @Input() emailreg
+  @Input() phonereg
+  newusr
   
 
   public returnloginstatus(): boolean {
@@ -39,6 +43,15 @@ export class LoginComponent implements OnInit {
           this.faillogin = true;
           //this.errmsh = user.Name;
         }
+      });
+  }
+
+  public reg(): void {
+
+    // console.log('clicked');
+    this.regservice.auth(this.emailreg.trim(), this.phonereg.trim())
+      .subscribe(user => {
+        this.newusr=user
       });
   }
 

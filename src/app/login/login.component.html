@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card card-container">
+  <div class="card card-container" *ngIf="registerscreen">
     <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
     <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
     <p id="profile-name" class="profile-name-card"></p>
@@ -18,8 +18,26 @@
     </form><!-- /form -->
     <a href="#" class="forgot-password">
       Forgot the password?
+    </a><br>
+    <a href="#" class="forgot-password" (click)="registerscreen=true">
+      Register
     </a>
   </div><!-- /card-container -->
-  <div *ngIf="registerscreen">
+  <div class="card card-container" *ngIf="registerscreen">
+    <p id="d-name" class="profile-name-card"></p>
+    <form class="form-signin">
+      <span id="d-email" class="reauth-email"></span>
+      <input  [(ngModel)]="emailreg" type="email" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <input [(ngModel)]="phonereg"  name="inputPhone" class="form-control" placeholder="Phone " required>
+
+
+        <!--label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label-->
+
+      <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="reg()">Sign in</button>
+      <p *ngIf="newusr">Your password is {{newusr.Password}}</p>
+      <p *ngIf="newusr">Your TOTP Key is {{newusr.Key}}</p>
+    </form>
   </div>
 </div><!-- /container -->

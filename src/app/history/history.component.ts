@@ -11,10 +11,10 @@ import {CookiesService} from '../cookies.service';
 export class HistoryComponent implements OnInit {
 
   historylist: any;
-  user:any;
-  loggedin:boolean;
+  user: any;
+  loggedin: boolean;
 
-  constructor(private http: HttpClient, private historyservice: HistoryService, private cookies:CookiesService) {
+  constructor(private http: HttpClient, private historyservice: HistoryService, private cookies: CookiesService) {
     if (this.cookies.getCookie('usr') != '') {
       this.user = (JSON.parse(this.cookies.getCookie('usr')));
       if (this.user.ID > 0) {
@@ -26,8 +26,8 @@ export class HistoryComponent implements OnInit {
   ngOnInit() {
 
     this.historyservice.auth(this.user.APIKey)
-      .subscribe(user => {
-this.historylist=user.result.reverse()
+      .subscribe(us => {
+this.historylist = us
       });
   }
 

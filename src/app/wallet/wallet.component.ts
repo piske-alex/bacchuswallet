@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CookiesService} from '../cookies.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {WalletService} from '../wallet.service';
 
 @Component({
   selector: 'app-wallet',
@@ -13,7 +14,7 @@ export class WalletComponent implements OnInit {
   loggedin:boolean;
   balance:any;
 
-  constructor(private cookies: CookiesService,private modalService: NgbModal) {
+  constructor(private cookies: CookiesService,private modalService: NgbModal, private walletservice : WalletService) {
     if (this.cookies.getCookie('usr') != '') {
       this.user = (JSON.parse(this.cookies.getCookie('usr')));
       if (this.user.ID > 0) {
@@ -23,7 +24,7 @@ export class WalletComponent implements OnInit {
   }
 
   ngOnInit() {
-  this.historyservice.auth(this.user)
+  this.walletservice.auth(this.user)
       .subscribe(user => {
 this.balance=user
       });
