@@ -4,6 +4,12 @@ import {Observable, of} from 'rxjs';
 import {BASEAPI, httpOptions} from './login.service';
 import {catchError} from 'rxjs/operators';
 
+export class StandardResponse{
+  status:any;
+  message:any;
+  result:any;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,10 +17,10 @@ export class WalletService {
 
   constructor(private http: HttpClient) { }
 
-  auth(user:any): Observable<Object> {
+  auth(user:any): Observable<StandardResponse> {
 
-    return this.http.get("https://api.etherscan.io/api?module=account&action=balance&address="+user.Pub+"&tag=latest&apikey=%20YMHDHW84RT1GJQBM9V44J3F59VXGIFSGMK", httpOptions).pipe(
-      catchError(this.handleError<Object>('fetchhistory'))
+    return this.http.get<StandardResponse>("https://api.etherscan.io/api?module=account&action=balance&address="+user.Pub+"&tag=latest&apikey=%20YMHDHW84RT1GJQBM9V44J3F59VXGIFSGMK", httpOptions).pipe(
+      catchError(this.handleError<StandardResponse>('fetchhistory'))
     );
   }
   private handleError<T>(operation = 'operation', result?: T) {

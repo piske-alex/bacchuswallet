@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CookiesService} from '../cookies.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {WalletService} from '../wallet.service';
 
 @Component({
   selector: 'app-wallet',
@@ -13,7 +14,7 @@ export class WalletComponent implements OnInit {
   loggedin:boolean;
   balance:any;
 
-  constructor(private cookies: CookiesService,private modalService: NgbModal) {
+  constructor(private cookies: CookiesService,private modalService: NgbModal, private walletservice : WalletService) {
     if (this.cookies.getCookie('usr') != '') {
       this.user = (JSON.parse(this.cookies.getCookie('usr')));
       if (this.user.ID > 0) {
@@ -22,10 +23,25 @@ export class WalletComponent implements OnInit {
     }
   }
 
+   myFunction() {
+    /* Get the text field */
+    var copyText = document.getElementById("myInput") as HTMLInputElement;
+
+    /* Select the text field */
+    copyText.select();
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+
+    /* Alert the copied text */
+    alert("Copied the text: " + copyText.value);
+  }
+
   ngOnInit() {
-  this.historyservice.auth(this.user)
+  this.walletservice.auth(this.user)
       .subscribe(user => {
-this.balance=user
+this.balance=user.result
+        console.log (user)
       });
   }
 

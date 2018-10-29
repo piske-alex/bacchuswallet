@@ -8,6 +8,7 @@ import { HistoryComponent } from './history/history.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     NgbModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]

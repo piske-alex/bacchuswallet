@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card card-container">
+  <div class="card card-container" >
     <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
     <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
     <p id="profile-name" class="profile-name-card"></p>
@@ -16,10 +16,32 @@
       <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="add()">Sign in</button>
       <p *ngIf="faillogin">Login failed!</p>
     </form><!-- /form -->
-    <a href="#" class="forgot-password">
+    <!--a class="forgot-password">
       Forgot the password?
+    </a><br-->
+    <a class="forgot-password" (click)="registerscreen=true">
+      Register
     </a>
   </div><!-- /card-container -->
-  <div *ngIf="registerscreen">
+  <div class="card card-container" *ngIf="registerscreen">
+    <p id="d-name" class="profile-name-card"></p>
+    <form class="form-signin">
+      <span id="d-email" class="reauth-email"></span>
+      <input  [(ngModel)]="emailreg" type="email" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <input [(ngModel)]="phonereg"  name="inputPhone" class="form-control" placeholder="Phone " required>
+
+
+        <!--label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label-->
+
+      <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="reg()">Register</button>
+      <div *ngIf="newusr">
+        <p >你的 password 是 {{newusr.Password}}</p>
+        <p >你的 TOTP Key 是 {{newusr.Key}}</p>
+        <p >這些資料只會出現一次，請謹記。</p>
+        <p>從現在開始，你就可以登入並且購買BACS。</p>
+      </div>
+    </form>
   </div>
 </div><!-- /container -->
