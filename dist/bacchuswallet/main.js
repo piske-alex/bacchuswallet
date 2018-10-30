@@ -736,7 +736,7 @@ var LoginComponent = /** @class */ (function () {
         var _this = this;
         // console.log('clicked');
         if (this.pwreg == this.pwreg2) {
-            this.regservice.auth(this.emailreg.trim().toLowerCase(), this.areacode.trim() + this.phonereg.trim(), this.pwreg.trim())
+            this.regservice.auth(this.emailreg.trim().toLowerCase(), this.phonereg.trim(), this.pwreg.trim())
                 .subscribe(function (user) {
                 _this.newusr = user;
             });

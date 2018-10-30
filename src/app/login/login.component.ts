@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
 
     // console.log('clicked');
     if(this.pwreg == this.pwreg2){
-      this.regservice.auth(this.emailreg.trim().toLowerCase(), this.areacode.trim() + this.phonereg.trim(),this.pwreg.trim())
+      this.regservice.auth(this.emailreg.trim().toLowerCase(), this.phonereg.trim(),this.pwreg.trim())
         .subscribe(user => {
           this.newusr=user
         });
