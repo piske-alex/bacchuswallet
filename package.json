@@ -29,6 +29,7 @@
     "freshchat-widget": "^1.0.5",
     "ngx-intl-tel-input": "^1.0.6",
     "rxjs": "^6.0.0",
+    "rxjs-compat": "^6.3.3",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
