@@ -17,7 +17,7 @@ export class AppComponent {
       if (this.user.ID > 0) {
         this.loggedin = true;
       }
-    }
+    }//jhh
   }
   logout(){
     this.login.logout();
