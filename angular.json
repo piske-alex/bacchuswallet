@@ -24,7 +24,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "../node_modules/ngx-intl-tel-input/resource/intl-tel-input.css"
+              "src/intl-tel-input.css"
             ],
             "scripts": []
           },
