@@ -12,7 +12,7 @@ export class KYCService {
 
   constructor(private http: HttpClient, private cookies:CookiesService) { }
 
-  auth(apikey, name, idnum, country, age): Observable<Object> {
+  auth(apikey, name, idnum, country, age): Observable<User>  {
 
     // let refid = RegisterService.getParameterByName('refid', null) || '10099'
     return this.http.get(BASEAPI + 'account/KYC/' + apikey + '/' + name + '/' + idnum + '/' + country + '/' + age, httpOptions).pipe(
@@ -20,7 +20,7 @@ export class KYCService {
         // console.log(LoginService.getFormUrlEncoded(this.authData));
         this.cookies.setCookie('usr', JSON.stringify(user), 1);
       }),
-      catchError(this.handleError<Object>('fetchhistory'))
+      catchError(this.handleError<User>('fetchhistory'))
     );
 
 
