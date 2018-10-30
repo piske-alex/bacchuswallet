@@ -28,7 +28,9 @@ export class LoginComponent implements OnInit {
   @Input() phonereg
   @Input() areacode
   @Input() pwreg
+  @Input() pwreg2
   newusr
+  pwnm:boolean
   
 
   public returnloginstatus(): boolean {
@@ -53,13 +55,19 @@ export class LoginComponent implements OnInit {
   public reg(): void {
 
     // console.log('clicked');
-    this.regservice.auth(this.emailreg.trim().toLowerCase(), this.areacode.trim() + this.phonereg.trim(),this.pwreg.trim())
-      .subscribe(user => {
-        this.newusr=user
-      });
+    if(this.pwreg == this.pwreg2){
+      this.regservice.auth(this.emailreg.trim().toLowerCase(), this.areacode.trim() + this.phonereg.trim(),this.pwreg.trim())
+        .subscribe(user => {
+          this.newusr=user
+        });
+    }
+
   }
 
   ngOnInit(): void {
+    if(this.pwreg != this.pwreg2){
+      this.pwnm=true
+    }
   }
 
 }

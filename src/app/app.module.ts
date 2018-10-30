@@ -23,6 +23,8 @@ import { KYCComponent } from './kyc/kyc.component';
     BrowserModule,
     NgbModule.forRoot(),
     HttpClientModule,
+    NgxIntlTelInputModule,
+    BsDropdownModule.forRoot(),
     FormsModule,
     RouterModule.forRoot([]),
   ],

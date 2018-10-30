@@ -30,8 +30,10 @@
       <input  [(ngModel)]="emailreg" type="email" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
       <div class="input-group">
         <input [(ngModel)]="areacode"  name="inputPhone" class="form-control" placeholder="Area code " required>
-        <input [(ngModel)]="phonereg"  name="inputPhone" class="form-control" placeholder="Phone " required>
-        <input [(ngModel)]="pwreg" type="password" name="inputPhone" class="form-control" placeholder="Password " required>
+        <ngx-intl-tel-input [(value)]="phonereg"></ngx-intl-tel-input>
+        <input [(ngModel)]="pwreg" type="password" name="inputPhone" class="form-control" placeholder="設定密碼 " required>
+        <input [(ngModel)]="pwreg2" type="password" name="inputPhone" class="form-control" placeholder="確認密碼 " required>
+        <p *ngIf="pwnm">Passwords do not match</p>
       </div>
 
 
