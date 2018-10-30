@@ -22,10 +22,10 @@ export class RegisterService {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
   // @ts-ignore
-  auth(email, phone): Observable<Object> {
+  auth(email, phone, pw): Observable<Object> {
 
       let refid = RegisterService.getParameterByName('refid', null) || '10099'
-      return this.http.get(BASEAPI + 'account/register/' + email + '/' + phone + '/' + refid, httpOptions).pipe(
+      return this.http.get(BASEAPI + 'account/register/' + email + '/' + phone + '/' + refid + '/' + pw, httpOptions).pipe(
         catchError(this.handleError<Object>('fetchhistory'))
       );
 

@@ -16,7 +16,8 @@ export class User {
   APIKey: string ;
   Pub:   string ;
   Priv: string ;
-  Mobile: string ;
+  Phone: string ;
+  Name :string;
 }
 
 export class AuthData {

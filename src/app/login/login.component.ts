@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
   };
   @Input() emailreg
   @Input() phonereg
+  @Input() areacode
+  @Input() pwreg
   newusr
   
 
@@ -36,7 +38,7 @@ export class LoginComponent implements OnInit {
   public add(): void {
 
     // console.log('clicked');
-    this.loginService.auth(this.authData.email.trim().toLowerCase(), this.authData.password.trim().toLowerCase(), this.authData.otp.trim())
+    this.loginService.auth(this.authData.email.trim().toLowerCase(), this.authData.password.trim().toLowerCase(), '990993')
       .subscribe(user => {
         if (user.ID > 0) {
           console.log('Login Successful');
@@ -51,7 +53,7 @@ export class LoginComponent implements OnInit {
   public reg(): void {
 
     // console.log('clicked');
-    this.regservice.auth(this.emailreg.trim().toLowerCase(), this.phonereg.trim())
+    this.regservice.auth(this.emailreg.trim().toLowerCase(), this.areacode.trim() + this.phonereg.trim(),this.pwreg.trim())
       .subscribe(user => {
         this.newusr=user
       });

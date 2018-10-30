@@ -9,13 +9,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import { KYCComponent } from './kyc/kyc.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     WalletComponent,
-    HistoryComponent
+    HistoryComponent,
+    KYCComponent
   ],
   imports: [
     BrowserModule,

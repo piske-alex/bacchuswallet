@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="card card-container" *ngIf="step1">
+    <p id="d-name" class="profile-name-card"></p>
+    <pre style="max-height: 400px;overflow-scrolling: auto; overflow-wrap: break-spaces">
+
+    </pre>
+    <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="step2=true;step1=false;">同意</button>
+    <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" >不同意</button>
+  </div>
+  <div class="card card-container" *ngIf="step2">
+    <p id="d-nsame" class="profile-name-card"></p>
+    <form class="form-signin">
+      <span id="d-email" class="reauth-email"></span>
+      <input  [(ngModel)]="name" type="email" name="inputEmail" class="form-control" placeholder="你的名字" required autofocus>
+      <input [(ngModel)]="idnum"  name="inputPhone" class="form-control" placeholder="身份證字號" required>
+      <input [(ngModel)]="country" type="password" name="inputPhone" class="form-control" placeholder="國籍" required>
+      <input [(ngModel)]="age" type="password" name="inputPhone" class="form-control" placeholder="年齡" required>
+
+
+      <!--label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label-->
+
+      <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="reg()">Register</button>
+      <div *ngIf="newusr">
+        <!--p >你的 password 是 {{newusr.Password}}</p>
+        <!--p >你的 TOTP Key 是 {{newusr.Key}}</p>
+        <p-- >這些資料只會出現一次，請謹記。</p-->
+        <p>從現在開始，你就可以登入並且購買BACS。</p>
+      </div>
+    </form>
+  </div>
+</div>

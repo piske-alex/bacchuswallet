@@ -13,12 +13,15 @@ export class WalletComponent implements OnInit {
   user:any;
   loggedin:boolean;
   balance:any;
+  kycscreen:boolean
 
   constructor(private cookies: CookiesService,private modalService: NgbModal, private walletservice : WalletService) {
     if (this.cookies.getCookie('usr') != '') {
       this.user = (JSON.parse(this.cookies.getCookie('usr')));
-      if (this.user.ID > 0) {
+      if (this.user.ID > 0 && this.user.Name) {
         this.loggedin = true;
+      }else{
+        this.kycscreen = true
       }
     }
   }

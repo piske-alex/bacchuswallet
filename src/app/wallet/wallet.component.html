@@ -1,4 +1,4 @@
-
+<div *ngIf="!kycscreen">
 <div class="container pt">
   <div class="row">
     <div class="col-md-12">
@@ -105,7 +105,10 @@
         <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="myFunction()">Copy</button>
       </div>
     </div>
+    <p>1 ETH = 1500 BACS</p>
     <pre>Send BACS to this address. 使用二維碼轉賬請小心核對地址</pre>
     <img class="img-fluid" src="https://sales.bacc.tech/cgi/qr_img.php?d={{user.Pub}}&e=M&s=4"  alt="">
   </div>
 </ng-template>
+</div>
+<div *ngIf="kycscreen"><app-kyc></app-kyc></div>

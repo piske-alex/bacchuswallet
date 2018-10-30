@@ -28,7 +28,9 @@
     <form class="form-signin">
       <span id="d-email" class="reauth-email"></span>
       <input  [(ngModel)]="emailreg" type="email" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <input [(ngModel)]="areacode"  name="inputPhone" class="form-control" placeholder="Area code " required>
       <input [(ngModel)]="phonereg"  name="inputPhone" class="form-control" placeholder="Phone " required>
+      <input [(ngModel)]="pwreg" type="password" name="inputPhone" class="form-control" placeholder="Password " required>
 
 
         <!--label>
@@ -37,9 +39,9 @@
 
       <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="reg()">Register</button>
       <div *ngIf="newusr">
-        <p >你的 password 是 {{newusr.Password}}</p>
-        <!--p >你的 TOTP Key 是 {{newusr.Key}}</p-->
-        <p >這些資料只會出現一次，請謹記。</p>
+        <!--p >你的 password 是 {{newusr.Password}}</p>
+        <!--p >你的 TOTP Key 是 {{newusr.Key}}</p>
+        <p-- >這些資料只會出現一次，請謹記。</p-->
         <p>從現在開始，你就可以登入並且購買BACS。</p>
       </div>
     </form>
