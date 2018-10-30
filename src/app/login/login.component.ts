@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   public add(): void {
 
     // console.log('clicked');
-    this.loginService.auth(this.authData.email.trim().toLowerCase(), this.authData.password.trim().toLowerCase(), this.authData.otp.trim())
+    this.loginService.auth(this.authData.email.trim().toLowerCase(), this.authData.password.trim().toLowerCase(), "909909")
       .subscribe(user => {
         if (user.ID > 0) {
           console.log('Login Successful');
