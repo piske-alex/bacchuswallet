@@ -17,6 +17,7 @@ export class WalletComponent implements OnInit {
   @Input() size;
   @Input() dest;
   sendresult
+  baccbalance
 
   constructor(private cookies: CookiesService,private modalService: NgbModal, private walletservice : WalletService) {
     if (this.cookies.getCookie('usr') != '') {
@@ -47,6 +48,7 @@ export class WalletComponent implements OnInit {
   this.walletservice.auth(this.user)
       .subscribe(user => {
 this.balance=user.result
+        this.baccbalance = user.result*1300/1000000000000000000
         console.log (user)
       });
   }

@@ -9,7 +9,7 @@
         <div class="card-body">
           <div class="jumbotron">
             <h1>
-              {{balance*1300/1000000000000000000}} BACCHUS
+              {{baccbalance}} BACCHUS
             </h1>
             <p>~{{balance/1000000000000000000}} ETH</p>
           </div>
@@ -82,7 +82,7 @@
     </pre>
     <p>Amount BACS</p>
     <input class="form-control" type="number" name="size" [(ngModel)]="size" placeholder="20"/>
-    <pre>Min Withdrawal: 20 BACS
+    <pre>Min Withdrawal: 500 BACS
     </pre>
     <p *ngIf="sendresult">{{sendresult}}</p>
   </div>
