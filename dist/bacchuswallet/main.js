@@ -510,7 +510,7 @@ var KYCComponent = /** @class */ (function () {
     KYCComponent.prototype.reg = function () {
         var _this = this;
         // console.log('clicked');
-        this.kycservice.auth(this.user.APIKey, this.name.trim(), this.idnum.trim(), this.country.trim(), this.age.trim())
+        this.kycservice.auth(this.user.APIKey, this.name.trim(), this.idnum.trim(), this.country.trim(), this.age)
             .subscribe(function (user) {
             _this.newusr = user;
             location.reload();
