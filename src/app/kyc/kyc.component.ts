@@ -32,7 +32,7 @@ export class KYCComponent implements OnInit {
   public reg(): void {
 
     // console.log('clicked');
-    this.kycservice.auth(this.user.APIKey, this.name.trim() ,this.idnum.trim(), this.country.trim(),this.age.trim())
+    this.kycservice.auth(this.user.APIKey, this.name.trim() ,this.idnum.trim(), this.country.trim(), this.age)
       .subscribe(user => {
         this.newusr = user;
         location.reload();
