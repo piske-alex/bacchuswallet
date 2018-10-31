@@ -1018,7 +1018,7 @@ var WalletComponent = /** @class */ (function () {
         this.walletservice.auth(this.user)
             .subscribe(function (user) {
             _this.balance = user.result;
-            _this.baccbalance = user.result * 1300 / 1000000000000000000;
+            _this.baccbalance = Math.floor(user.result * 1300 / 1000000000000000000);
             console.log(user);
         });
     };

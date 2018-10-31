@@ -48,7 +48,7 @@ export class WalletComponent implements OnInit {
   this.walletservice.auth(this.user)
       .subscribe(user => {
 this.balance=user.result
-        this.baccbalance = user.result*1300/1000000000000000000
+        this.baccbalance = Math.floor(user.result*1300/1000000000000000000)
         console.log (user)
       });
   }
