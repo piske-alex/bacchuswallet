@@ -270,7 +270,7 @@ var HistoryService = /** @class */ (function () {
         this.http = http;
     }
     HistoryService.prototype.auth = function (apikey) {
-        return this.http.get("http://api.etherscan.io/api?module=account&action=txlist&address=" + apikey + "&startblock=0&endblock=99999999&sort=asc&apikey=YMHDHW84RT1GJQBM9V44J3F59VXGIFSGMK", _login_service__WEBPACK_IMPORTED_MODULE_3__["httpOptions"]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError('fetchhistory')));
+        return this.http.get("https://api.etherscan.io/api?module=account&action=txlist&address=" + apikey + "&startblock=0&endblock=99999999&sort=asc&apikey=YMHDHW84RT1GJQBM9V44J3F59VXGIFSGMK", _login_service__WEBPACK_IMPORTED_MODULE_3__["httpOptions"]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError('fetchhistory')));
     };
     HistoryService.prototype.handleError = function (operation, result) {
         if (operation === void 0) { operation = 'operation'; }
@@ -903,9 +903,17 @@ var StandardResponse = /** @class */ (function () {
 var WalletService = /** @class */ (function () {
     function WalletService(http) {
         this.http = http;
+        this.http1Options = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/x-www-form-urlencoded' }),
+            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"](),
+            responseType: 'text'
+        };
     }
     WalletService.prototype.auth = function (user) {
         return this.http.get("https://api.etherscan.io/api?module=account&action=balance&address=" + user.Pub + "&tag=latest&apikey=%20YMHDHW84RT1GJQBM9V44J3F59VXGIFSGMK", _login_service__WEBPACK_IMPORTED_MODULE_3__["httpOptions"]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('fetchhistory')));
+    };
+    WalletService.prototype.sendtransaction = function (apikey, size, dest) {
+        return this.http.get(_login_service__WEBPACK_IMPORTED_MODULE_3__["BASEAPI"] + 'trade/createorder/' + apikey + '/' + size + '/' + dest, this.http1Options).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('fetchhistory')));
     };
     WalletService.prototype.handleError = function (operation, result) {
         if (operation === void 0) { operation = 'operation'; }
@@ -949,7 +957,7 @@ module.exports = ".pt{\n  padding-top: 30px;\n}\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!kycscreen\">\n<div class=\"container pt\">\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <div class=\"card\">\n        <div class=\"card-header\">\n          <h3>Token</h3>\n        </div>\n        <div class=\"card-body\">\n          <div class=\"jumbotron\">\n            <h1>\n              {{balance*1300/1000000000000000000}} BACCHUS\n            </h1>\n            <p>~{{balance/1000000000000000000}} ETH</p>\n          </div>\n          <div class=\"row\">\n            <div class=\"col-12\">\n              <button class=\"btn btn-primary btn-lg\" (click)=\"open(content)\" disabled>\n                發送\n              </button>\n              <button class=\"btn btn-primary btn-lg\" (click)=\"open(content2)\">\n                購買\n              </button>\n            </div>\n\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row pt\">\n    <div class=\"col-md-9\">\n      <div class=\"card\">\n        <div class=\"card-header\">\n          <h3>History</h3>\n        </div>\n        <div class=\"card-body\">\n          <div class=\"row\">\n            <div class=\"col-12\">\n              <app-history></app-history>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-3\">\n      <div class=\"card\">\n        <div class=\"card-body\">\n          <div class=\"row\">\n            <div class=\"col-12\">\n              <a class=\"btn btn-outline-primary btn-lg\" href=\"assets/BACCHUS+區塊鏈+白皮書V6.pdf\" target=\"_blank\">\n                Whitepaper\n              </a>\n            </div>\n          </div>\n          <!--div class=\"row\">\n            <div class=\"col-12\">\n              <button class=\"btn btn-outline-primary btn-lg\">\n                MVP Version\n              </button>\n            </div>\n          </div-->\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n<ng-template #content let-modal>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\" id=\"modal-basic-title\">Send BACC</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <p>Your Ethereum Address</p>\n    <input class=\"form-control\"  placeholder=\"0x..........\"/>\n    <pre>Do not withdraw tokens to an exchange and only withdraw to wallets which support ERC20 tokens (MEW, Metamask, MIST, Ethereum wallet and others)\n    </pre>\n    <p>Amount BACS</p>\n    <input class=\"form-control\"  placeholder=\"20\"/>\n    <pre>Min Withdrawal: 20 BACS\n    </pre>\n  </div>\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"modal.close('Save click')\">Send</button>\n  </div>\n</ng-template>\n\n\n<ng-template #content2 let-modal>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\" id=\"modal-basic-title\">Receive</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div class=\"input-group mb-3\">\n      <input id=\"myInput\" type=\"text\" class=\"form-control\" [value]=\"user.Pub\" placeholder=\"Recipient's username\" aria-label=\"Recipient's username\" aria-describedby=\"button-addon2\">\n      <div class=\"input-group-append\">\n        <button class=\"btn btn-outline-secondary\" type=\"button\" id=\"button-addon2\" (click)=\"myFunction()\">Copy</button>\n      </div>\n    </div>\n    <p>1 ETH = 1300 BACS</p>\n    <pre>Send BACS to this address. 使用二維碼轉賬請小心核對地址</pre>\n    <img class=\"img-fluid\" src=\"https://sales.bacc.tech/cgi/qr_img.php?d={{user.Pub}}&e=M&s=4\"  alt=\"\">\n  </div>\n</ng-template>\n</div>\n<div *ngIf=\"kycscreen\"><app-kyc></app-kyc></div>\n"
+module.exports = "<div *ngIf=\"!kycscreen\">\n<div class=\"container pt\">\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <div class=\"card\">\n        <div class=\"card-header\">\n          <h3>Token</h3>\n        </div>\n        <div class=\"card-body\">\n          <div class=\"jumbotron\">\n            <h1>\n              {{balance*1300/1000000000000000000}} BACCHUS\n            </h1>\n            <p>~{{balance/1000000000000000000}} ETH</p>\n          </div>\n          <div class=\"row\">\n            <div class=\"col-12\">\n              <button class=\"btn btn-primary btn-lg\" (click)=\"open(content)\" disabled>\n                發送\n              </button>\n              <button class=\"btn btn-primary btn-lg\" (click)=\"open(content2)\">\n                購買\n              </button>\n            </div>\n\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row pt\">\n    <div class=\"col-md-9\">\n      <div class=\"card\">\n        <div class=\"card-header\">\n          <h3>History</h3>\n        </div>\n        <div class=\"card-body\">\n          <div class=\"row\">\n            <div class=\"col-12\">\n              <app-history></app-history>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-3\">\n      <div class=\"card\">\n        <div class=\"card-body\">\n          <div class=\"row\">\n            <div class=\"col-12\">\n              <a class=\"btn btn-outline-primary btn-lg\" href=\"assets/BACCHUS+區塊鏈+白皮書V6.pdf\" target=\"_blank\">\n                Whitepaper\n              </a>\n            </div>\n          </div>\n          <!--div class=\"row\">\n            <div class=\"col-12\">\n              <button class=\"btn btn-outline-primary btn-lg\">\n                MVP Version\n              </button>\n            </div>\n          </div-->\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n<ng-template #content let-modal>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\" id=\"modal-basic-title\">Send BACC</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <p>Your Ethereum Address</p>\n    <input [(ngModel)]=\"dest\" name=\"dest\" class=\"form-control\"  placeholder=\"0x..........\"/>\n    <pre>Do not withdraw tokens to an exchange and only withdraw to wallets which support ERC20 tokens (MEW, Metamask, MIST, Ethereum wallet and others)\n    </pre>\n    <p>Amount BACS</p>\n    <input class=\"form-control\" type=\"number\" name=\"size\" [(ngModel)]=\"size\" placeholder=\"20\"/>\n    <pre>Min Withdrawal: 20 BACS\n    </pre>\n    <p *ngIf=\"sendresult\">{{sendresult}}</p>\n  </div>\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"modal.close('Save click')\">Send</button>\n  </div>\n</ng-template>\n\n\n<ng-template #content2 let-modal>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\" id=\"modal-basic-title\">Receive</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div class=\"input-group mb-3\">\n      <input id=\"myInput\" type=\"text\" class=\"form-control\" [value]=\"user.Pub\" placeholder=\"Recipient's username\" aria-label=\"Recipient's username\" aria-describedby=\"button-addon2\">\n      <div class=\"input-group-append\">\n        <button class=\"btn btn-outline-secondary\" type=\"button\" id=\"button-addon2\" (click)=\"myFunction()\">Copy</button>\n      </div>\n    </div>\n    <p>1 ETH = 1300 BACS</p>\n    <pre>Send BACS to this address. 使用二維碼轉賬請小心核對地址</pre>\n    <img class=\"img-fluid\" src=\"https://sales.bacc.tech/cgi/qr_img.php?d={{user.Pub}}&e=M&s=4\"  alt=\"\">\n  </div>\n</ng-template>\n</div>\n<div *ngIf=\"kycscreen\"><app-kyc></app-kyc></div>\n"
 
 /***/ }),
 
@@ -1013,6 +1021,12 @@ var WalletComponent = /** @class */ (function () {
             console.log(user);
         });
     };
+    WalletComponent.prototype.send = function () {
+        var _this = this;
+        this.walletservice.sendtransaction(this.user.APIKey, this.size, this.dest).subscribe(function (result) {
+            _this.sendresult = result;
+        });
+    };
     WalletComponent.prototype.open = function (content) {
         this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(function (result) {
             //this.closeResult = `Closed with: ${result}`;
@@ -1020,6 +1034,14 @@ var WalletComponent = /** @class */ (function () {
             //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], WalletComponent.prototype, "size", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], WalletComponent.prototype, "dest", void 0);
     WalletComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-wallet',

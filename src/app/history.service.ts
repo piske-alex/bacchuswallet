@@ -14,10 +14,12 @@ export class HistoryService {
 
   auth(apikey:string): Observable<StandardResponse> {
 
-    return this.http.get<StandardResponse>("http://api.etherscan.io/api?module=account&action=txlist&address="+apikey+"&startblock=0&endblock=99999999&sort=asc&apikey=YMHDHW84RT1GJQBM9V44J3F59VXGIFSGMK", httpOptions).pipe(
+    return this.http.get<StandardResponse>("https://api.etherscan.io/api?module=account&action=txlist&address="+apikey+"&startblock=0&endblock=99999999&sort=asc&apikey=YMHDHW84RT1GJQBM9V44J3F59VXGIFSGMK", httpOptions).pipe(
       catchError(this.handleError<StandardResponse>('fetchhistory'))
     );
   }
+
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CookiesService} from '../cookies.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {WalletService} from '../wallet.service';
@@ -14,6 +14,9 @@ export class WalletComponent implements OnInit {
   loggedin:boolean;
   balance:any;
   kycscreen:boolean
+  @Input() size;
+  @Input() dest;
+  sendresult
 
   constructor(private cookies: CookiesService,private modalService: NgbModal, private walletservice : WalletService) {
     if (this.cookies.getCookie('usr') != '') {
@@ -46,6 +49,12 @@ export class WalletComponent implements OnInit {
 this.balance=user.result
         console.log (user)
       });
+  }
+
+  send(){
+    this.walletservice.sendtransaction(this.user.APIKey,this.size,this.dest).subscribe(result=>{
+      this.sendresult=result
+    })
   }
 
   open(content) {
