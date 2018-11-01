@@ -18,6 +18,7 @@ export class User {
   Priv: string ;
   Phone: string ;
   Name :string;
+  Initamount: number;
 }
 
 export class AuthData {

@@ -3,9 +3,11 @@
     Here you transaction history will be shown
   </p>
   <div *ngFor="let entry of historylist.result">
-    <h4>{{entry.from}} => {{entry.to}}</h4>
-    <a><pre>success: {{entry.hash}}</pre></a>
-    Amount: {{entry.value/1000000000000000000}}
+    <div *ngIf="entry.to==user.Pub">
+      <h4>{{entry.from}} => {{entry.to}}</h4>
+      <a><pre>success: {{entry.hash}}</pre></a>
+      Amount: {{entry.value/1000000000000000000}}
+    </div>
   </div>
 
 </div>
