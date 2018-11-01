@@ -314,7 +314,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"historylist\">\n  <p *ngIf=\"message\">\n    Here you transaction history will be shown\n  </p>\n  <div *ngFor=\"let entry of historylist.result\">\n    <div *ngIf=\"entry.to==user.Pub\">\n      <h4>{{entry.from}} => {{entry.to}}</h4>\n      <a><pre>success: {{entry.hash}}</pre></a>\n      Amount: {{entry.value/1000000000000000000}}\n    </div>\n  </div>\n\n</div>\n\n"
+module.exports = "<div *ngIf=\"historylist\">\n  <p *ngIf=\"!historylist.result[0]\">\n    Here you transaction history will be shown\n  </p>\n  <div *ngFor=\"let entry of historylist.result\">\n    <div *ngIf=\"entry.to==user.Pub.toLowerCase()\">\n      <h4>{{entry.from}} => {{entry.to}}</h4>\n      <a><pre>success: {{entry.hash}}</pre></a>\n      Amount: {{entry.value/1000000000000000000}}\n    </div>\n  </div>\n\n</div>\n\n"
 
 /***/ }),
 
