@@ -990,7 +990,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var ALERTS = [{
         type: 'success',
-        message: 'This is an success alert',
+        message: '酒神代幣預售在 2018年11月7日香港UTC+8 的00:00上開始，並將一直持續到2019年2月6日香港UTC+8的23:59\n' +
+            '以30%MORE COIN 預售5000萬TOKEN',
     }
 ];
 var WalletComponent = /** @class */ (function () {
