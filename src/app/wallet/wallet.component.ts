@@ -3,6 +3,17 @@ import {CookiesService} from '../cookies.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {WalletService} from '../wallet.service';
 
+interface Alert {
+  type: string;
+  message: string;
+}
+
+const ALERTS: Alert[] = [{
+  type: 'success',
+  message: 'This is an success alert',
+}
+];
+
 @Component({
   selector: 'app-wallet',
   templateUrl: './wallet.component.html',
@@ -10,6 +21,7 @@ import {WalletService} from '../wallet.service';
 })
 export class WalletComponent implements OnInit {
 
+  alerts:Alert[];
   user:any;
   loggedin:boolean;
   balance:any;
@@ -28,6 +40,7 @@ export class WalletComponent implements OnInit {
         this.kycscreen = true
       }
     }
+    this.reset();
   }
 
    myFunction() {
@@ -59,6 +72,14 @@ this.balance=user.result
     })
   }
 
+
+  close(alert: Alert) {
+    this.alerts.splice(this.alerts.indexOf(alert), 1);
+  }
+
+  reset() {
+    this.alerts = Array.from(ALERTS);
+  }
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       //this.closeResult = `Closed with: ${result}`;

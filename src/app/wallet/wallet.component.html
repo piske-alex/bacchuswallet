@@ -2,6 +2,13 @@
 <div class="container pt">
   <div class="row">
     <div class="col-md-12">
+      <p *ngFor="let alert of alerts">
+        <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
       <div class="card">
         <div class="card-header">
           <h3>Token</h3>
