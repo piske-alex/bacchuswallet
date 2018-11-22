@@ -15,13 +15,14 @@ export class AppComponent {
   constructor(private translate: TranslateService, private cookies: CookiesService, private login:LoginService) {
 
     if(this.cookies.getCookie("lang") == ''){
+      console.log(this.cookies.getCookie("lang"))
       translate.setDefaultLang('en');
     }else{
       translate.setDefaultLang(this.cookies.getCookie('lang'));
     }
 
     // the lang to use, if the lang isn't available, it will use the current loader to get them
-    translate.use('en');
+    //translate.use('en');
 
     if (this.cookies.getCookie('usr') != '') {
       this.user = (JSON.parse(this.cookies.getCookie('usr')));
@@ -35,6 +36,6 @@ export class AppComponent {
   }
   tset(lang){
     this.translate.use(lang);
-    this.cookies.setCookie("lang",lang,2);
+    this.cookies.setCookie("lang",lang,222);
   }
 }
