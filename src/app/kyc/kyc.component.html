@@ -70,29 +70,29 @@ ii.	且不是一名美國《證券法》S條例中的“美國人”。
 
 藉由您接受或依賴本白皮書或其任何部分而產生或與之有關的決定，在適用的法律、法規和規則允許的最大範圍內，BACCHUS酒神及其關聯公司和代幣發行合作夥伴不承擔任何形式的侵權、合同或其他方面的任何間接、特殊、附帶、間接或其他損失（包括但不限於收入，收入或利潤的損失，以及使用或資料的丟失）。BACCHUS酒神及其附屬公司和代幣發行合作夥伴不會以任何形式向任何實體或個人作出或聲稱做出任何陳述、保證或承諾，包括與真相、準確性有關的陳述，保證或承諾以及本系統白皮書中提供的任何資訊的完整性。
     </pre>
-    <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="step2=true;step1=false;">同意</button>
-    <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" >不同意</button>
+    <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="step2=true;step1=false;">{{'agree'|translate}}</button>
+    <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" >{{'notagree'|translate}}</button>
   </div>
   <div class="card card-container" *ngIf="step2">
     <p id="d-nsame" class="profile-name-card"></p>
     <form class="form-signin">
       <span id="d-email" class="reauth-email"></span>
-      <input  [(ngModel)]="name" name="inputEmail" class="form-control" placeholder="你的名字" required autofocus>
-      <input [(ngModel)]="idnum"  name="inputPhone" class="form-control" placeholder="身份證字號" required>
-      <input [(ngModel)]="country"  name="inputPhone" class="form-control" placeholder="國籍" required>
-      <input [(ngModel)]="age" type="number" name="inputPhone" class="form-control" placeholder="年齡" required>
+      <input  [(ngModel)]="name" name="inputEmail" class="form-control" [placeholder]="'yourname'|translate" required autofocus>
+      <input [(ngModel)]="idnum"  name="inputPhone" class="form-control" [placeholder]="'idnum'|translate" required>
+      <input [(ngModel)]="country"  name="inputPhone" class="form-control" [placeholder]="'country'|translate" required>
+      <input [(ngModel)]="age" type="number" name="inputPhone" class="form-control" [placeholder]="'age'|translate" required>
 
 
       <!--label>
         <input type="checkbox" value="remember-me"> Remember me
       </label-->
 
-      <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="reg()">Submit</button>
+      <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="reg()">{{'submit'|translate}}</button>
       <div *ngIf="newusr">
         <!--p >你的 password 是 {{newusr.Password}}</p>
         <!--p >你的 TOTP Key 是 {{newusr.Key}}</p>
         <p-- >這些資料只會出現一次，請謹記。</p-->
-        <p>從現在開始，你就可以登入並且購買BACS。</p>
+        <p>{{'loginandbuy'|translate}}</p>
       </div>
     </form>
   </div>

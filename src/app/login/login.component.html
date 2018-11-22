@@ -5,33 +5,33 @@
     <p id="profile-name" class="profile-name-card"></p>
     <form class="form-signin">
       <span id="reauth-email" class="reauth-email"></span>
-      <input  [(ngModel)]="authData.email" type="email" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-      <input [(ngModel)]="authData.password" type="password" name="inputPassword" class="form-control" placeholder="Password" required>
+      <input  [(ngModel)]="authData.email" type="email" name="inputEmail" class="form-control" [placeholder]="'email'|translate" required autofocus>
+      <input [(ngModel)]="authData.password" type="password" name="inputPassword" class="form-control" [placeholder]="'password'|translate " required>
 
       <div id="remember" class="checkbox">
         <!--label>
           <input type="checkbox" value="remember-me"> Remember me
         </label-->
       </div>
-      <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="add()">Sign in</button>
-      <p *ngIf="faillogin">Login failed!</p>
+      <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="add()">{{'login'|translate}}</button>
+      <p *ngIf="faillogin">{{'loginfailed'|translate}}</p>
     </form><!-- /form -->
     <!--a class="forgot-password">
       Forgot the password?
     </a><br-->
     <a class="btn btn-primary btn-sm" (click)="registerscreen=true">
-      Register
+      {{'register'|translate}}
     </a>
   </div><!-- /card-container -->
   <div class="card card-container" *ngIf="registerscreen">
     <p id="d-name" class="profile-name-card"></p>
     <form class="form-signin">
       <span id="d-email" class="reauth-email"></span>
-      <input  [(ngModel)]="emailreg" type="email" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <input  [(ngModel)]="emailreg" type="email" name="inputEmail" class="form-control" [placeholder]="'email'|translate" required autofocus>
       <div class="input-group">
         <ngx-intl-tel-input [(value)]="phonereg"></ngx-intl-tel-input>
-        <input [(ngModel)]="pwreg" type="password" name="inputPhone" class="form-control" placeholder="設定密碼 " required>
-        <input [(ngModel)]="pwreg2" type="password" name="inputPhone" class="form-control" placeholder="確認密碼 " required>
+        <input [(ngModel)]="pwreg" type="password" name="inputPhone" class="form-control" [placeholder]="'password'|translate " required>
+        <input [(ngModel)]="pwreg2" type="password" name="inputPhone" class="form-control" [placeholder]="'confirmpass'|translate" required>
         <p *ngIf="pwnm">Passwords do not match</p>
       </div>
 
@@ -46,7 +46,7 @@
         <!--p >你的 password 是 {{newusr.Password}}</p>
         <!--p >你的 TOTP Key 是 {{newusr.Key}}</p>
         <p-- >這些資料只會出現一次，請謹記。</p-->
-        <p>從現在開始，你就可以登入並且購買BACS。</p>
+        <p>{{'loginandbuy'|translate}}</p>
       </div>
     </form>
   </div>

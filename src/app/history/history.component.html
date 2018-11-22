@@ -1,11 +1,11 @@
 <div *ngIf="historylist">
   <p *ngIf="!historylist.result[0]">
-    Here you transaction history will be shown
+    {{"HEREYOURTRANSACTIONHISTORYWILLBESHOWN"|translate}}
   </p>
   <div *ngFor="let entry of historylist.result">
     <div *ngIf="entry.to==user.Pub.toLowerCase()">
       <h4>{{entry.from}} => {{entry.to}}</h4>
-      <a><pre>success: {{entry.hash}}</pre></a>
+      <a><pre>{{"SUCCESS"|translate}}: {{entry.hash}}</pre></a>
       Amount: {{entry.value/1000000000000000000}}
     </div>
   </div>
