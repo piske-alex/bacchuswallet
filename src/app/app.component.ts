@@ -14,7 +14,11 @@ export class AppComponent {
   user: any;
   constructor(private translate: TranslateService, private cookies: CookiesService, private login:LoginService) {
 
-    translate.setDefaultLang('en');
+    if(this.cookies.getCookie("lang") == ''){
+      translate.setDefaultLang('en');
+    }else{
+      translate.setDefaultLang(this.cookies.getCookie('lang'));
+    }
 
     // the lang to use, if the lang isn't available, it will use the current loader to get them
     translate.use('en');
@@ -31,5 +35,6 @@ export class AppComponent {
   }
   tset(lang){
     this.translate.use(lang);
+    this.cookies.setCookie("lang",lang,2);
   }
 }
