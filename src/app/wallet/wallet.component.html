@@ -16,9 +16,9 @@
         <div class="card-body">
           <div class="jumbotron">
             <h1>
-              {{baccbalance+user.Initamount}} BACCHUS
+              {{baccbalance+user.Initamount}} PDX
             </h1>
-            <p>~{{balance/1000000000000000000+user.Initamount/1000}} ETH</p>
+            <p>~{{balance/1000000000000000000+user.Initamount/1500}} ETH</p>
           </div>
           <div class="row">
             <div class="col-12">
@@ -87,9 +87,9 @@
     <input [(ngModel)]="dest" name="dest" class="form-control"  placeholder="0x.........."/>
     <pre>{{'donotwithdraw'|translate}}Do not withdraw tokens to an exchange and only withdraw to wallets which support ERC20 tokens (MEW, Metamask, MIST, Ethereum wallet and others)
     </pre>
-    <p>{{'amount'|translate}} BACS</p>
+    <p>{{'amount'|translate}} PDX</p>
     <input class="form-control" type="number" name="size" [(ngModel)]="size" placeholder="20"/>
-    <pre>{{'minwithdraw'|translate}}: 500 BACS
+    <pre>{{'minwithdraw'|translate}}: 500 PDX
     </pre>
     <p *ngIf="sendresult">{{sendresult}}</p>
   </div>
@@ -113,8 +113,8 @@
         <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="myFunction()">{{'copy'|translate}}</button>
       </div>
     </div>
-    <p>1 ETH = 1000 BACS</p>
-    <pre>{{'send'|translate}} BACS {{'tothisaddress'|translate}}. {{'checkforqr'|translate}}</pre>
+    <p>1 ETH = 1500 PDX</p>
+    <pre>{{'send'|translate}} ETH {{'tothisaddress'|translate}}. {{'checkforqr'|translate}}</pre>
     <img class="img-fluid" src="https://sales.bacc.tech/cgi/qr_img.php?d={{user.Pub}}&e=M&s=4"  alt="">
   </div>
 </ng-template>
