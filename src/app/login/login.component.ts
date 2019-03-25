@@ -30,16 +30,17 @@ export class LoginComponent implements OnInit {
   @Input() areacode
   @Input() pwreg
   @Input() pwreg2
+  modal: any;
   newusr
   pwnm:boolean
-  
+
 
   public returnloginstatus(): boolean {
     return this.loggedin;
   }
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modal = this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       //this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
