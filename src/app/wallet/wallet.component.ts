@@ -32,13 +32,14 @@ export class WalletComponent implements OnInit {
   sendresult
   baccbalance
   av
+  private modal: Promise<void>;
 
   constructor(private cookies: CookiesService,private modalService: NgbModal, private walletservice : WalletService) {
     if (this.cookies.getCookie('usr') != '') {
       this.user = (JSON.parse(this.cookies.getCookie('usr')));
       if (this.user.ID > 0 && this.user.Name) {
         this.loggedin = true;
-      }else{
+      } else {
         this.kycscreen = true
       }
     }
