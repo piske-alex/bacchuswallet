@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AuthData, LoginService} from '../login.service';
 import {Router} from '@angular/router';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {RegisterService} from '../register.service';
 
 @Component({
@@ -10,8 +11,8 @@ import {RegisterService} from '../register.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private regservice: RegisterService) {
-    this.registerscreen=false;
+  constructor(private loginService: LoginService, private regservice: RegisterService,private modalService: NgbModal) {
+    this.registerscreen = false;
   }
 
   loggedin: boolean;
@@ -35,6 +36,14 @@ export class LoginComponent implements OnInit {
 
   public returnloginstatus(): boolean {
     return this.loggedin;
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      //this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
   public add(): void {

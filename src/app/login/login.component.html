@@ -19,21 +19,33 @@
     <!--a class="forgot-password">
       Forgot the password?
     </a><br-->
-    <a class="btn btn-primary btn-sm" (click)="registerscreen=true">
+    <a class="btn btn-primary btn-sm" (click)="open(content)">
       {{'register'|translate}}
     </a>
   </div><!-- /card-container -->
-  <div class="card card-container" *ngIf="registerscreen">
-    <p id="d-name" class="profile-name-card"></p>
-    <form class="form-signin">
-      <span id="d-email" class="reauth-email"></span>
-      <input  [(ngModel)]="emailreg" type="email" name="inputEmail" class="form-control" [placeholder]="'email'|translate" required autofocus>
-      <div class="input-group">
-        <ngx-intl-tel-input [(value)]="phonereg"></ngx-intl-tel-input>
-        <input [(ngModel)]="pwreg" type="password" name="inputPhone" class="form-control" [placeholder]="'password'|translate " required>
-        <input [(ngModel)]="pwreg2" type="password" name="inputPhone" class="form-control" [placeholder]="'confirmpass'|translate" required>
-        <p *ngIf="pwnm">Passwords do not match</p>
-      </div>
+
+</div><!-- /container -->
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4>{{'register'|translate}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card card-container" >
+      <p id="d-name" class="profile-name-card"></p>
+      <form class="form-signin">
+        <span id="d-email" class="reauth-email"></span>
+        <input  [(ngModel)]="emailreg" type="email" name="inputEmail" class="form-control" [placeholder]="'email'|translate" required autofocus>
+        <div class="input-group">
+          <ngx-intl-tel-input [(value)]="phonereg"></ngx-intl-tel-input>
+          <input [(ngModel)]="pwreg" type="password" name="inputPhone" class="form-control" [placeholder]="'password'|translate " required>
+          <input [(ngModel)]="pwreg2" type="password" name="inputPhone" class="form-control" [placeholder]="'confirmpass'|translate" required>
+          <p *ngIf="pwnm">Passwords do not match</p>
+        </div>
 
 
 
@@ -41,13 +53,17 @@
           <input type="checkbox" value="remember-me"> Remember me
         </label-->
 
-      <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="reg()">Register</button>
-      <div *ngIf="newusr">
-        <!--p >你的 password 是 {{newusr.Password}}</p>
-        <!--p >你的 TOTP Key 是 {{newusr.Key}}</p>
-        <p-- >這些資料只會出現一次，請謹記。</p-->
-        <p>{{'loginandbuy'|translate}}</p>
-      </div>
-    </form>
+
+      </form>
+    </div>
   </div>
-</div><!-- /container -->
+  <div class="modal-footer">
+    <button class="btn btn-lg btn-outline-primary btn-block btn-signin" type="submit" (click)="reg()">Register</button>
+    <div *ngIf="newusr">
+      <!--p >你的 password 是 {{newusr.Password}}</p>
+
+      <p-- >這些資料只會出現一次，請謹記。</p-->
+      <p>{{'loginandbuy'|translate}}</p>
+    </div>
+  </div>
+</ng-template>
