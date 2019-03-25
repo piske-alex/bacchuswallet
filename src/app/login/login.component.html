@@ -41,7 +41,7 @@
         <span id="d-email" class="reauth-email"></span>
         <input  [(ngModel)]="emailreg" type="email" name="inputEmail" class="form-control" [placeholder]="'email'|translate" required autofocus>
         <div class="input-group">
-          <ngx-intl-tel-input [(value)]="phonereg"></ngx-intl-tel-input>
+          <ngx-intl-tel-input [(value)]="phonereg" [enablePlaceholder]="false"></ngx-intl-tel-input>
           <input [(ngModel)]="pwreg" type="password" name="inputPhone" class="form-control" [placeholder]="'password'|translate " required>
           <input [(ngModel)]="pwreg2" type="password" name="inputPhone" class="form-control" [placeholder]="'confirmpass'|translate" required>
           <p *ngIf="pwnm">Passwords do not match</p>
