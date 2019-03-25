@@ -27,10 +27,10 @@
 </div><!-- /container -->
 
 
-<ng-template #content let-modal>
+<ng-template #content let-modal let-d="dismiss">
   <div class="modal-header">
     <h4>{{'register'|translate}}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
